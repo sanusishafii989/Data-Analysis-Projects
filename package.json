@@ -1,0 +1,21 @@
+{
+  "name": "my-new-project",
+  "version": "1.0.0",
+  "description": "A new TypeScript project",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/my-new-project.git"
+  },
+  "keywords": [],
+  "author": "Your Name",
+  "license": "ISC"
+}
