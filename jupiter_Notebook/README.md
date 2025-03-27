@@ -68,10 +68,10 @@ df_US = df[df['job_country'] == 'Nigeria']
 Each Jupyter notebook for this project aimed at investigating specific aspects of the data job market. Here’s how I approached each question:
 
 # Question 1:
-    a. What are the top 10 job location for data scientist in Nigeria?
-    b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
-    c. What are the list of top 10 companies for data scientist in Nigeria?
-    d. What are the skills most in demand for the top 3 most popular data roles?
+a. What are the top 10 job location for data scientist in Nigeria?
+b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
+c. What are the list of top 10 companies for data scientist in Nigeria?
+d. What are the skills most in demand for the top 3 most popular data roles?
 
 # Answer: 
     a. What are the top 10 job locations for data scientists in Nigeria?
@@ -131,7 +131,7 @@ Top Companies:
 The top companies hiring data scientists include both local and international firms, reflecting a diverse demand for data science skills across different sectors.
 In-Demand Skills:
 
-Python, SQL, and machine learning are the top skills required for data scientists. For data analysts, Excel and data visualization tools are crucial, while data engineers need expertise in big data technologies and cloud platforms.
+`Python`, `SQL`, and `Machine Learning` are the top skills required for data scientists. For data analysts, Excel and data visualization tools are crucial, while data engineers need expertise in big data technologies and cloud platforms.
 These insights provide a comprehensive overview of the data science job market in Nigeria, highlighting key trends and demands.
 
 View my notebook with detailed steps here: [1-EDA_Data_Scientist_Jobs_in_Nigeria.ipynb](1-EDA_Data_Scientist_Jobs_in_Nigeria.ipynb).
@@ -199,8 +199,8 @@ plt.show()
 
 *Top 10 Job Companies for Data Scientists in Nigeria*
 
-![Skills Most in Demand for the Top 3 Most Popular Data Scientist Roles](Top_Skills_for_Data_Scientist_in_Nigeria.png.png)
+![Skills Most in Demand for the Top 3 Most Popular Data Scientist Roles](Top_Skills_for_Data_Scientist_in_Nigeria.png)
 
 *Skills Most in Demand for the Top 3 Most Popular Data Roles*
 
-*This README section includes detailed insights based on the visualizations and analysis from your EDA project. It provides a clear and comprehensive overview of the key findings and trends in the data science job market in Nigeria.*
+<h7>This README section includes detailed insights based on the visualizations and analysis from your EDA project. It provides a clear and comprehensive overview of the key findings and trends in the data science job market in Nigeria.</h7>
