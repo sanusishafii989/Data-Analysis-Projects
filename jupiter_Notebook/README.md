@@ -68,10 +68,10 @@ df_US = df[df['job_country'] == 'Nigeria']
 Each Jupyter notebook for this project aimed at investigating specific aspects of the data job market. Here’s how I approached each question:
 
 # Question 1:
-a. What are the top 10 job location for data scientist in Nigeria?
-b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
-c. What are the list of top 10 companies for data scientist in Nigeria?
-d. What are the skills most in demand for the top 3 most popular data roles?
+### a. What are the top 10 job location for data scientist in Nigeria?
+### b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
+### c. What are the list of top 10 companies for data scientist in Nigeria?
+### d. What are the skills most in demand for the top 3 most popular data roles?
 
 # Answer: 
     a. What are the top 10 job locations for data scientists in Nigeria?
