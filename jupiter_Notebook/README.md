@@ -9,10 +9,10 @@ The data sourced from [Luke Barousse's Python Course]() which provides a foundat
 Below are the questions I want to answer in my project:
 
 # Question 1:
-    a. What are the top 10 job location for data scientist in Nigeria?
-    b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
-    c. What are the list of top 10 companies for data scientist in Nigeria?
-    d. What are the skills most in demand for the top 3 most popular data roles?
+### a. What are the top 10 job location for data scientist in Nigeria?
+### b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
+### c. What are the list of top 10 companies for data scientist in Nigeria?
+### d. What are the skills most in demand for the top 3 most popular data roles?
 2. How are in-demand skills trending for Data Analysts?
 3. How well do jobs and skills pay for Data Analysts?
 4. What are the optimal skills for data analysts to learn? (High Demand AND High Paying) 
