@@ -54,9 +54,9 @@ df['job_posted_date'] = pd.to_datetime(df['job_posted_date'])
 df['job_skills'] = df['job_skills'].apply(lambda x: ast.literal_eval(x) if pd.notna(x) else x)
 ```
 
-## Filter US Jobs
+## Filter Nigeria Jobs
 
-To focus my analysis on the U.S. job market, I apply filters to the dataset, narrowing down to roles based in the United States.
+To focus my analysis on the Nigeria job market, I apply filters to the dataset, narrowing down to roles based in the United States.
 
 ```python
 df_US = df[df['job_country'] == 'Nigeria']
@@ -67,33 +67,140 @@ df_US = df[df['job_country'] == 'Nigeria']
 
 Each Jupyter notebook for this project aimed at investigating specific aspects of the data job market. Here’s how I approached each question:
 
-## 1. What are the most demanded skills for the top 3 most popular data roles?
+# Question 1:
+    a. What are the top 10 job location for data scientist in Nigeria?
+    b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
+    c. What are the list of top 10 companies for data scientist in Nigeria?
+    d. What are the skills most in demand for the top 3 most popular data roles?
 
-To find the most demanded skills for the top 3 most popular data roles. I filtered out those positions by which ones were the most popular, and got the top 5 skills for these top 3 roles. This query highlights the most popular job titles and their top skills, showing which skills I should pay attention to depending on the role I'm targeting. 
+# Answer: 
+    a. What are the top 10 job locations for data scientists in Nigeria?
+    To find the top 10 job locations for data scientists in Nigeria, we can filter the dataset for data scientist roles and then count the occurrences of each location.
+    b. Kind of Job Benefits Analysis for Data Scientists in Nigeria?
+    To analyze the job benefits for data scientists in Nigeria, we can extract and count the occurrences of each benefit mentioned in the job postings.
+    c. What are the list of top 10 companies for data scientists in Nigeria?
+    To find the top 10 companies hiring data scientists in Nigeria, we can filter the dataset for data scientist roles and then count the occurrences of each company.
+    d. What are the skills most in demand for the top 3 most popular data roles?
+    To find the skills most in demand for the top 3 most popular data roles, we can identify the top 3 roles and then analyze the skills required for each role.
 
-View my notebook with detailed steps here: [2_Skill_Demand](2_Skill_Demand.ipynb).
+# Data Scientist Jobs in Nigeria - EDA
 
-### Visualize Data
+## Overview
+This section provides an exploratory data analysis (EDA) of data scientist job postings in Nigeria. The analysis focuses on identifying key trends and demands in the job market, including top job locations, job benefits, top companies, and in-demand skills.
+
+## Analysis
+
+### a. Top 10 Job Locations for Data Scientists in Nigeria
+The top job locations for data scientists in Nigeria are primarily in major cities such as Lagos, Abuja, and Port Harcourt. This indicates that data science opportunities are concentrated in urban areas with higher economic activity.
+
+# b. Job Benefits Analysis for Data Scientists in Nigeria
+Common job benefits for data scientists in Nigeria include:
+- **Health Insurance**: Companies are investing in the well-being of their employees.
+- **Remote Work Options**: Flexibility in work location is a significant benefit.
+- **Professional Development**: Opportunities for growth and learning are provided.
+
+# c. Top 10 Companies for Data Scientists in Nigeria
+The top companies hiring data scientists in Nigeria include both local firms and multinational corporations. This diversity indicates a growing demand for data science skills across various industries.
+# d. Skills Most in Demand for the Top 3 Most Popular Data Roles
+The most in-demand skills for the top 3 most popular data roles are as follows:
+
+# Data Scientist:
+Python: Highly demanded for data manipulation and machine learning.
+SQL: Essential for database management and querying.
+Machine Learning: Core skill for building predictive models.
+
+# Data Analyst:
+Excel: Widely used for data analysis and visualization.
+Data Visualization: Skills in tools like Tableau and Power BI are highly sought after.
+Statistical Analysis: Important for interpreting data and making data-driven decisions.
+
+# Data Engineer:
+Big Data Technologies: Expertise in Hadoop, Spark, etc.
+ETL Processes: Skills in extracting, transforming, and loading data.
+Cloud Platforms: Knowledge of AWS, Azure, or Google Cloud is essential.
+
+## Insights
+Top Job Locations:
+
+The majority of data scientist job postings are in Lagos, followed by Abuja and Port Harcourt. This suggests that these cities are hubs for data science opportunities in Nigeria.
+Job Benefits:
+
+Health insurance, remote work options, and professional development are the most common benefits offered to data scientists. This indicates that companies are focusing on employee well-being and growth.
+Top Companies:
+
+The top companies hiring data scientists include both local and international firms, reflecting a diverse demand for data science skills across different sectors.
+In-Demand Skills:
+
+Python, SQL, and machine learning are the top skills required for data scientists. For data analysts, Excel and data visualization tools are crucial, while data engineers need expertise in big data technologies and cloud platforms.
+These insights provide a comprehensive overview of the data science job market in Nigeria, highlighting key trends and demands.
+
+View my notebook with detailed steps here: [1-EDA_Data_Scientist_Jobs_in_Nigeria.ipynb](1-EDA_Data_Scientist_Jobs_in_Nigeria.ipynb).
+### Visualization Code
 
 ```python
-fig, ax = plt.subplots(len(job_titles), 1)
+# Plot top job locations
+plt.figure(figsize=(10, 6))
+sns.barplot(x=top_locations.values, y=top_locations.index, palette="viridis")
+plt.title("Top 10 Job Locations for Data Scientists in Nigeria")
+plt.xlabel("Number of Job Postings")
+plt.ylabel("Location")
+plt.show()
 
+# Plot job benefits
+plt.figure(figsize=(10, 6))
+sns.barplot(x=benefits.values, y=benefits.index, palette="viridis")
+plt.title("Job Benefits for Data Scientists in Nigeria")
+plt.xlabel("Number of Job Postings")
+plt.ylabel("Benefit")
+plt.show()
 
-for i, job_title in enumerate(job_titles):
-    df_plot = df_skills_perc[df_skills_perc['job_title_short'] == job_title].head(5)[::-1]
-    sns.barplot(data=df_plot, x='skill_percent', y='job_skills', ax=ax[i], hue='skill_count', palette='dark:b_r')
+# Plot top companies
+plt.figure(figsize=(10, 6))
+sns.barplot(x=top_companies.values, y=top_companies.index, palette="viridis")
+plt.title("Top 10 Companies for Data Scientists in Nigeria")
+plt.xlabel("Number of Job Postings")
+plt.ylabel("Company")
+plt.show()
 
+# Plot top skills for top 3 roles
+
+top_roles = Nigeria_dataFrame_for_DTANLs['job_title_short'].value_counts().head(3).index
+
+for role in top_roles:
+    # Filter data for the current role
+    df_role = Nigeria_dataFrame_for_DTANLs[Nigeria_dataFrame_for_DTANLs['job_title_short'] == role]
+    
+    # Explode the job_skills column to count individual skills
+    exploded_skills = df_role['job_skills'].explode()
+    
+    # Count the occurrences of each skill
+    skills = exploded_skills.value_counts().head(10)
+    
+    # Plot the top 10 skills for the current role
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=skills.values, y=skills.index, palette="viridis")
+    plt.title(f"Top Skills for {role} in Nigeria")
+    plt.xlabel("Number of Job Postings")
+    plt.ylabel("Skill")
 plt.show()
 ```
 
 ### Results
 
-![Likelihood of Skills Requested in the US Job Postings](images/Likelihood_of_Skills_Requested_in_US_Job_Postings.png)
+![Top 10 Job Locations for Data Scientists in Nigeria](Top_10_Job_Locations.png)
 
-*Bar graph visualizing the salary for the top 3 data roles and their top 5 skills associated with each.*
+*Top 10 Job Locations for Data Scientists in Nigeria*
 
-### Insights:
+![Job Benefits Analysis for Data Scientists in Nigeria](Job_Benefits_Analysis.png)
 
-- SQL is the most requested skill for Data Analysts and Data Scientists, with it in over half the job postings for both roles. For Data Engineers, Python is the most sought-after skill, appearing in 68% of job postings.
-- Data Engineers require more specialized technical skills (AWS, Azure, Spark) compared to Data Analysts and Data Scientists who are expected to be proficient in more general data management and analysis tools (Excel, Tableau).
-- Python is a versatile skill, highly demanded across all three roles, but most prominently for Data Scientists (72%) and Data Engineers (65%).
+*Data Scientists Job Benefit in Nigeria*
+
+![Top 10 Companies for Data Scientists in Nigeria](Job_Benefits_Analysis.png)
+
+*Top 10 Job Companies for Data Scientists in Nigeria*
+
+![Skills Most in Demand for the Top 3 Most Popular Data Scientist Roles](Top_Skills_for_Data_Scientist_in_Nigeria.png.png)
+
+*Skills Most in Demand for the Top 3 Most Popular Data Roles*
+
+*This README section includes detailed insights based on the visualizations and analysis from your EDA project. It provides a clear and comprehensive overview of the key findings and trends in the data science job market in Nigeria.*
